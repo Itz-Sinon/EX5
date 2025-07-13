@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Drag and drop</title>
+  </head>
+  <body class="montserrat">
+    <div id="inputPlace">
+      <textarea
+        name="input"
+        id="input"
+        placeholder="Enter name of task"
+        class="montserrat"
+      ></textarea>
+      <div id="btnPlace">
+        <button id="getInput" class="montserrat">Add to list</button>
+        <button id="deleteTrash" class="montserrat">Delete</button>
+      </div>
+    </div>
+    <div id="information">
+      <div id="nameTo_do">
+        <h2>To Do</h2>
+      </div>
+      <div id="to_doBox"></div>
+      <div id="nameDoing">
+        <h2>Doing</h2>
+      </div>
+      <div id="doingBox"></div>
+      <div id="nameDone">
+        <h2>Done</h2>
+      </div>
+      <div id="doneBox"></div>
+      <div id="nameTrash">
+        <h2>Trash</h2>
+      </div>
+      <div id="trashBox"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
