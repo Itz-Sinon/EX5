@@ -33,8 +33,8 @@ body {
 }
 #inputPlace {
   display: flex;
-  justify-content: space-around;
-  width: 500px;
+  justify-content: center;
+  width: 100%;
   height: 100px;
   margin-bottom: 10px;
 }
@@ -47,19 +47,20 @@ body {
   height: 40px;
 }
 #getInput {
-    background-color: var(--ToDo-Background-Color);
-    width: 100px;
-    border: var(--Sub-Text-Color) solid 2px;
+  background-color: var(--ToDo-Background-Color);
+  width: 100px;
+  border: var(--Sub-Text-Color) solid 2px;
 }
 #deleteTrash {
-    background-color: var(--Trash-Background-Color);
-    width: 100px;
-    border: var(--Sub-Text-Color) solid 2px;
+  background-color: var(--Trash-Background-Color);
+  width: 100px;
+  border: var(--Sub-Text-Color) solid 2px;
 }
 #input {
   background-color: var(--Input-Background-Color);
-  width: 300px;
+  width: 30%;
   height: 100px;
+  margin-right: 5%;
   padding: 10px 12px;
   outline: none;
   resize: none;
@@ -67,7 +68,7 @@ body {
 
 #information {
   display: grid;
-  grid-template: 50px 1fr / 1fr 200px 10px 200px 10px 200px 10px 200px 1fr;
+  grid-template: 50px 1fr / 1fr 20% 10px 20% 10px 20% 10px 20% 1fr;
   width: 100%;
 }
 #information div {
@@ -118,14 +119,60 @@ body {
   background-color: var(--Div-Background-Color);
   border: var(--Sub-Text-Color) solid 2px;
   color: var(--Sub-Text-Color);
-  margin: 10px 0 auto;
-  height: 50px;
-  width: 200px;
+  margin: 10px auto 0;
+  padding: 10px;
+  width: 100%;
   cursor: grab;
 }
 .taskBox {
   justify-content: center;
   background-color: var(--Background-Color);
-  width: 90%;
-  height: 80%;
+  padding: 10px;
+  width: 95%;
+  height: 95%;
+}
+
+@media screen and (max-width: 425px) {
+  #inputPlace {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0;
+    height: 20%;
+  }
+  #input {
+    margin-right: 0;
+    width: 90%;
+    height: 5%;
+  }
+  #btnPlace {
+    flex-direction: row;
+    margin-top: 15px;
+    width: 90%;
+  }
+
+  #information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+  }
+  #nameTo_do,
+  #nameDoing,
+  #nameDone,
+  #nameTrash {
+    margin-top: 20px;
+  }
+  #to_doBox,
+  #doingBox,
+  #doneBox,
+  #trashBox,
+  #nameTo_do,
+  #nameDoing,
+  #nameDone,
+  #nameTrash {
+    width: 90%;
+  }
+  .task {
+    padding: 5px;
+  }
 }
