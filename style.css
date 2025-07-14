@@ -132,7 +132,7 @@ body {
   height: 95%;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 800px) {
   #inputPlace {
     flex-direction: column;
     align-items: center;
