@@ -12,10 +12,14 @@ renderList(allLists);
 let dragged = null;
 
 [toDo, doing, done, trash].forEach((box) => {
-  box.addEventListener("dragover", (e) => {
+  box.addEventListener("dragover", dragOver);
+  box.addEventListener("touchmove", dragOver);
+  function dragOver(e) {
     e.preventDefault();
-  });
-  box.addEventListener("drop", (e) => {
+  }
+  box.addEventListener("drop", setDrop);
+  box.addEventListener("touchend", setDrop);
+  function setDrop() {
     if (dragged) {
       box.appendChild(dragged);
 
@@ -40,15 +44,17 @@ let dragged = null;
       localStorage.setItem("todoList", JSON.stringify(allLists));
     }
     dragged = null;
-  });
+  }
 });
 
 function addDragEvents() {
   const tasks = document.getElementsByClassName("task");
   for (let task of tasks) {
-    task.addEventListener("dragstart", (e) => {
+    task.addEventListener("dragstart", startDrag);
+    task.addEventListener("touchstart", startDrag);
+    function startDrag() {
       dragged = task;
-    });
+    }
   }
 }
 
@@ -71,7 +77,7 @@ btnDelete.addEventListener("click", () => {
   let choice = confirm("Are you sure want to delete ?");
   if (choice) {
     allLists = getList();
-    for (let i = allLists.length - 1; i > -1 ; i--) {
+    for (let i = allLists.length - 1; i > -1; i--) {
       if (allLists[i].status == "Trash") {
         allLists.splice(i, 1);
       }
