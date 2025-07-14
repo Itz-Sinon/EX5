@@ -161,16 +161,15 @@ body {
   #nameDone,
   #nameTrash {
     margin-top: 20px;
+    width: 90%;
   }
+  
   #to_doBox,
   #doingBox,
   #doneBox,
-  #trashBox,
-  #nameTo_do,
-  #nameDoing,
-  #nameDone,
-  #nameTrash {
+  #trashBox {
     width: 90%;
+    height: 20px;
   }
   .task {
     padding: 5px;
