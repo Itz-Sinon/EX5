@@ -169,7 +169,7 @@ body {
   #doneBox,
   #trashBox {
     width: 90%;
-    height: auto;
+    min-height: 50px;
   }
   .task {
     padding: 5px;

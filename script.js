@@ -71,7 +71,7 @@ btnDelete.addEventListener("click", () => {
   let choice = confirm("Are you sure want to delete ?");
   if (choice) {
     allLists = getList();
-    for (let i = 0; i < allLists.length; i++) {
+    for (let i = allLists.length - 1; i > -1 ; i--) {
       if (allLists[i].status == "Trash") {
         allLists.splice(i, 1);
       }
