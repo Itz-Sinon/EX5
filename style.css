@@ -109,12 +109,15 @@ button {
 }
 #doingBox {
   grid-area: 2/4/3/5;
+  min-height: 65vh;
 }
 #doneBox {
   grid-area: 2/6/3/7;
+  min-height: 65vh;
 }
 #trashBox {
   grid-area: 2/8/3/9;
+  min-height: 65vh;
 }
 .task {
   display: flex;
@@ -178,7 +181,7 @@ button {
   #doneBox,
   #trashBox {
     width: 90%;
-    min-height: 50px;
+    min-height: 60px;
   }
   .task {
     padding: 5px;
