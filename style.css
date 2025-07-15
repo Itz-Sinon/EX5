@@ -65,6 +65,9 @@ body {
   outline: none;
   resize: none;
 }
+button {
+  cursor: pointer;
+}
 
 #information {
   display: grid;
@@ -132,6 +135,7 @@ body {
 .taskBox {
   justify-content: center;
   background-color: var(--Background-Color);
+  border: var(--Sub-Text-Color) solid 2px;
   padding: 10px;
   width: 95%;
   height: 95%;
