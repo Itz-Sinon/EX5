@@ -13,6 +13,16 @@
     <title>Drag and drop</title>
   </head>
   <body class="montserrat">
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <div id="logInPlace" style="display: none">
+      <button id="logInGoogle" class="montserrat">Login with Google</button>
+    </div>
+    <div id="accountPlace">
+      <h3 id="userName">Hello</h3>
+      <button id="logOut" class="montserrat">Logout account</button>
+    </div>
     <div id="inputPlace">
       <textarea
         name="input"

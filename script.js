@@ -1,3 +1,64 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyBZqpIm8KBnHYzX_EVyxsZiF8Tk7-8FQZw",
+  authDomain: "test1-29602.firebaseapp.com",
+  projectId: "test1-29602",
+  appId: "1:965402988064:web:160925710944ca05e93645",
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+const provider = new firebase.auth.GoogleAuthProvider();
+
+let allLists = [];
+let UserID;
+
+auth.onAuthStateChanged(async (user) => {
+  if (user) {
+    document.getElementById("userName").innerHTML = "Hello " + user.displayName;
+    document.getElementById("logInPlace").style.display = "none";
+    document.getElementById("accountPlace").style.display = "";
+    document.getElementById("inputPlace").style.display = "";
+    document.getElementById("information").style.display = "";
+
+    UserID = user.uid;
+    const docRef = db.collection("User's Infor").doc(UserID);
+    const docSnap = await docRef.get();
+    if (docSnap.exists) {
+      const data = docSnap.data();
+      allLists = data["To-do List"];
+      console.log(allLists);
+      renderList(allLists);
+    } else {
+      allLists = [];
+      renderList(allLists);
+    }
+  } else {
+    allLists = [];
+    document.getElementById("logInPlace").style.display = "";
+    document.getElementById("accountPlace").style.display = "none";
+    document.getElementById("inputPlace").style.display = "none";
+    document.getElementById("information").style.display = "none";
+  }
+});
+
+const loginBtn = document.getElementById("logInGoogle");
+const logoutBtn = document.getElementById("logOut");
+
+loginBtn.addEventListener("click", () => {
+  auth
+    .signInWithPopup(provider)
+    .then((result) => {})
+    .catch((error) => {
+      alert("Fail to login");
+    });
+});
+
+logoutBtn.addEventListener("click", () => {
+  allLists = [];
+  auth.signOut();
+});
+
 const btnAdd = document.getElementById("getInput");
 const btnDelete = document.getElementById("deleteTrash");
 const input = document.getElementById("input");
@@ -5,9 +66,6 @@ const toDo = document.getElementById("to_doBox");
 const doing = document.getElementById("doingBox");
 const done = document.getElementById("doneBox");
 const trash = document.getElementById("trashBox");
-
-let allLists = getList();
-renderList(allLists);
 
 let dragged = null;
 
@@ -37,7 +95,8 @@ let dragged = null;
           break;
         }
       }
-      localStorage.setItem("todoList", JSON.stringify(allLists));
+      const newData = { "To-do List": allLists };
+      db.collection("User's Infor").doc(UserID).set(newData);
     }
     dragged = null;
   });
@@ -58,11 +117,10 @@ btnAdd.addEventListener("click", () => {
     return false;
   }
 
-  allLists = getList();
   allLists.push({ name: input.value, status: "To_Do" });
   input.value = "";
-
-  localStorage.setItem("todoList", JSON.stringify(allLists));
+  const newData = { "To-do List": allLists };
+  db.collection("User's Infor").doc(UserID).set(newData);
 
   renderList(allLists);
 });
@@ -70,14 +128,11 @@ btnAdd.addEventListener("click", () => {
 btnDelete.addEventListener("click", () => {
   let choice = confirm("Are you sure want to delete ?");
   if (choice) {
-    allLists = getList();
-    for (let i = allLists.length - 1; i > -1 ; i--) {
+    for (let i = allLists.length - 1; i > -1; i--) {
       if (allLists[i].status == "Trash") {
         allLists.splice(i, 1);
       }
     }
-    localStorage.setItem("todoList", JSON.stringify(allLists));
-
     renderList(allLists);
   }
 });
@@ -104,10 +159,4 @@ function renderList(list = []) {
     }
   });
   addDragEvents();
-}
-
-function getList() {
-  return localStorage.getItem("todoList")
-    ? JSON.parse(localStorage.getItem("todoList"))
-    : [];
 }
