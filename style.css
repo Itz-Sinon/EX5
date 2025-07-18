@@ -176,16 +176,19 @@ button {
 }
 
 @media screen and (max-width: 800px) {
+  #accountPlace {
+    margin-bottom: 10px;
+  }
   #inputPlace {
     flex-direction: column;
     align-items: center;
     margin-bottom: 0;
-    height: 20%;
+    height: 25%;
   }
   #input {
     margin-right: 0;
     width: 90%;
-    height: 5%;
+    height: 15vh;
   }
   #btnPlace {
     flex-direction: row;
