@@ -17,7 +17,29 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     <div id="logInPlace" style="display: none">
-      <button id="logInGoogle" class="montserrat">Login with Google</button>
+      <h2>Login</h2>
+      <p>Sign in with your email or Google account</p>
+      <form>
+        <label for="getEmail">Email</label> <br />
+        <input
+          type="email"
+          id="getEmail"
+          placeholder="Email@gmail.com"
+          class="montserrat"
+        />
+        <br />
+        <label for="getPass">Password</label> <br />
+        <input
+          type="text"
+          id="getPass"
+          placeholder="Your password"
+          class="montserrat"
+        />
+        <br />
+      </form>
+      <button id="logInEmail" class="montserrat">Sign in</button>
+      <p>_____Or continue with_____</p>
+      <button id="logInGoogle" class="montserrat">Sign in with Google</button>
     </div>
     <div id="accountPlace">
       <h3 id="userName">Hello</h3>
