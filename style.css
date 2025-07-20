@@ -30,6 +30,57 @@ body {
   width: 100%;
   height: 100vh;
 }
+#popUpAddToList,
+#popUpDeleteTrash,
+#popUpLogOut {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.211);
+  border-radius: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: -1;
+}
+#popUpAddToList-Content,
+#popUpDeleteTrash-Content,
+#popUpLogOut-Content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 500px;
+  height: 100px;
+  background-color: var(--Background-Color);
+  border: var(--Sub-Text-Color) solid 2px;
+  margin-top: 20px;
+}
+#closePopUpAdd,
+#closePopUpDelete,
+#closePopUpLogOut {
+  margin-top: 10px;
+  background-color: var(--Sub-Text-Color);
+  color: var(--Background-Color);
+  border: none;
+  height: 40px;
+  width: 100px;
+}
+#comfirmDelete,
+#comfirmLogOut {
+  margin-top: 10px;
+  background-color: var(--Trash-Background-Color);
+  border: var(--Sub-Text-Color) solid 2px;
+  height: 40px;
+  width: 100px;
+}
+.openPopUp {
+  opacity: 1 !important;
+  z-index: 999 !important;
+}
 #logInPlace {
   display: flex;
   flex-direction: column;
@@ -76,18 +127,19 @@ body {
 }
 #accountPlace {
   align-self: flex-start;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 100px;
   padding: 0 12px;
   width: 100%;
-  height: 50px;
+  margin-top: 10px;
+}
+#userName {
+  display: flex;
+  align-items: center;
 }
 #logOut {
-  justify-self: flex-end;
   height: 40px;
   width: 100px;
-  margin-left: 20px;
   background-color: var(--Trash-Background-Color);
   border: var(--Sub-Text-Color) solid 2px;
 }

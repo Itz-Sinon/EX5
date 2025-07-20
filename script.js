@@ -15,7 +15,8 @@ let UserID;
 
 auth.onAuthStateChanged(async (user) => {
   if (user) {
-    document.getElementById("userName").innerHTML = "Hello " + user.displayName;
+    document.getElementById("userName").innerHTML =
+      "Wellcome " + user.displayName;
     document.getElementById("logInPlace").style.display = "none";
     document.getElementById("accountPlace").style.display = "";
     document.getElementById("inputPlace").style.display = "";
@@ -27,7 +28,6 @@ auth.onAuthStateChanged(async (user) => {
     if (docSnap.exists) {
       const data = docSnap.data();
       allLists = data["To-do List"];
-      console.log(allLists);
       renderList(allLists);
     } else {
       allLists = [];
@@ -55,12 +55,22 @@ loginBtn.addEventListener("click", () => {
 });
 
 logoutBtn.addEventListener("click", () => {
-  allLists = [];
-  auth.signOut();
+  popUpLogOut.classList.add("openPopUp");
 });
 
 const btnAdd = document.getElementById("getInput");
+const popUpAdd = document.getElementById("popUpAddToList");
+const btnClosePopUpAdd = document.getElementById("closePopUpAdd");
+
 const btnDelete = document.getElementById("deleteTrash");
+const popUpDelete = document.getElementById("popUpDeleteTrash");
+const btnComfirmDelete = document.getElementById("comfirmDelete");
+const btnClosePopUpDelete = document.getElementById("closePopUpDelete");
+
+const popUpLogOut = document.getElementById("popUpLogOut");
+const btnComfirmLogOut = document.getElementById("comfirmLogOut");
+const btnClosePopUpLogOut = document.getElementById("closePopUpLogOut");
+
 const input = document.getElementById("input");
 const toDo = document.getElementById("to_doBox");
 const doing = document.getElementById("doingBox");
@@ -113,7 +123,7 @@ function addDragEvents() {
 
 btnAdd.addEventListener("click", () => {
   if (input.value == "") {
-    alert("Please enter input");
+    popUpAdd.classList.add("openPopUp");
     return false;
   }
 
@@ -126,15 +136,7 @@ btnAdd.addEventListener("click", () => {
 });
 
 btnDelete.addEventListener("click", () => {
-  let choice = confirm("Are you sure want to delete ?");
-  if (choice) {
-    for (let i = allLists.length - 1; i > -1; i--) {
-      if (allLists[i].status == "Trash") {
-        allLists.splice(i, 1);
-      }
-    }
-    renderList(allLists);
-  }
+  popUpDelete.classList.add("openPopUp");
 });
 
 function renderList(list = []) {
@@ -160,3 +162,31 @@ function renderList(list = []) {
   });
   addDragEvents();
 }
+
+btnClosePopUpAdd.addEventListener("click", () => {
+  popUpAdd.classList.remove("openPopUp");
+});
+
+btnComfirmDelete.addEventListener("click", () => {
+  for (let i = allLists.length - 1; i > -1; i--) {
+    if (allLists[i].status == "Trash") {
+      allLists.splice(i, 1);
+    }
+  }
+  renderList(allLists);
+  popUpDelete.classList.remove("openPopUp");
+});
+
+btnClosePopUpDelete.addEventListener("click", () => {
+  popUpDelete.classList.remove("openPopUp");
+});
+
+btnComfirmLogOut.addEventListener("click", () => {
+  allLists = [];
+  auth.signOut();
+  popUpLogOut.classList.remove("openPopUp");
+});
+
+btnClosePopUpLogOut.addEventListener("click", () => {
+  popUpLogOut.classList.remove("openPopUp");
+})

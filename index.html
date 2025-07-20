@@ -16,6 +16,30 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <div id="popUpAddToList">
+      <div id="popUpAddToList-Content">
+        <h3>Please enter the information into the input field</h3>
+        <button id="closePopUpAdd" class="montserrat">Close</button>
+      </div>
+    </div>
+    <div id="popUpDeleteTrash">
+      <div id="popUpDeleteTrash-Content">
+        <h3>Do you want to delete trash</h3>
+        <div>
+          <button id="comfirmDelete" class="montserrat">Delete</button>
+          <button id="closePopUpDelete" class="montserrat">Close</button>
+        </div>
+      </div>
+    </div>
+    <div id="popUpLogOut">
+      <div id="popUpLogOut-Content">
+        <h3>Do you want to log out your account</h3>
+        <div>
+          <button id="comfirmLogOut" class="montserrat">Log out</button>
+          <button id="closePopUpLogOut" class="montserrat">Close</button>
+        </div>
+      </div>
+    </div>
     <div id="logInPlace" style="display: none">
       <h2>Login</h2>
       <p>Sign in with your email or Google account</p>
@@ -42,7 +66,7 @@
       <button id="logInGoogle" class="montserrat">Sign in with Google</button>
     </div>
     <div id="accountPlace">
-      <h3 id="userName">Hello</h3>
+      <h3 id="userName"></h3>
       <button id="logOut" class="montserrat">Logout account</button>
     </div>
     <div id="inputPlace">
