@@ -261,6 +261,17 @@ button {
   }
 }
 @media screen and (max-width: 800px) {
+  #popUpAddToList,
+  #popUpDeleteTrash,
+  #popUpLogOut {
+    width: 100%;
+  }
+  #popUpAddToList-Content,
+  #popUpDeleteTrash-Content,
+  #popUpLogOut-Content {
+    width: 90%;
+    height: 130px;
+  }
   #accountPlace {
     margin-bottom: 10px;
   }

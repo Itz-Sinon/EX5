@@ -174,6 +174,8 @@ btnComfirmDelete.addEventListener("click", () => {
     }
   }
   renderList(allLists);
+  const newData = { "To-do List": allLists };
+  db.collection("User's Infor").doc(UserID).set(newData);
   popUpDelete.classList.remove("openPopUp");
 });
 
