@@ -262,9 +262,6 @@ button {
   height: 68px;
   margin: 10px auto 0;
 }
-.loading {
-  animation: loading 1s infinite alternate;
-}
 
 @keyframes loading {
   0% {
@@ -277,6 +274,21 @@ button {
     color: var(--Div-Background-After-Loading);
   }
 }
+.loading {
+  animation: loading 1s infinite alternate;
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.slideDown {
+  animation: slideDown 0.5s;
+}
+
 @media screen and (max-width: 500px) {
   #logInPlace {
     width: 90%;

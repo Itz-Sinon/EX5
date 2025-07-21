@@ -56,18 +56,22 @@ loginBtn.addEventListener("click", () => {
 
 logoutBtn.addEventListener("click", () => {
   popUpLogOut.classList.add("openPopUp");
+  popUpLogOutContent.classList.add("slideDown");
 });
 
 const btnAdd = document.getElementById("getInput");
 const popUpAdd = document.getElementById("popUpAddToList");
+const popUpAddContent = document.getElementById("popUpAddToList-Content");
 const btnClosePopUpAdd = document.getElementById("closePopUpAdd");
 
 const btnDelete = document.getElementById("deleteTrash");
 const popUpDelete = document.getElementById("popUpDeleteTrash");
+const popUpDeleteContent = document.getElementById("popUpDeleteTrash-Content");
 const btnComfirmDelete = document.getElementById("comfirmDelete");
 const btnClosePopUpDelete = document.getElementById("closePopUpDelete");
 
 const popUpLogOut = document.getElementById("popUpLogOut");
+const popUpLogOutContent = document.getElementById("popUpLogOut-Content");
 const btnComfirmLogOut = document.getElementById("comfirmLogOut");
 const btnClosePopUpLogOut = document.getElementById("closePopUpLogOut");
 
@@ -121,24 +125,6 @@ function addDragEvents() {
   }
 }
 
-btnAdd.addEventListener("click", () => {
-  if (input.value == "") {
-    popUpAdd.classList.add("openPopUp");
-    return false;
-  }
-
-  allLists.push({ name: input.value, status: "To_Do" });
-  input.value = "";
-  const newData = { "To-do List": allLists };
-  db.collection("User's Infor").doc(UserID).set(newData);
-
-  renderList(allLists);
-});
-
-btnDelete.addEventListener("click", () => {
-  popUpDelete.classList.add("openPopUp");
-});
-
 function renderList(list = []) {
   toDo.innerHTML = "";
   doing.innerHTML = "";
@@ -163,8 +149,29 @@ function renderList(list = []) {
   addDragEvents();
 }
 
+btnAdd.addEventListener("click", () => {
+  if (input.value == "") {
+    popUpAdd.classList.add("openPopUp");
+    popUpAddContent.classList.add("slideDown");
+    return false;
+  }
+
+  allLists.push({ name: input.value, status: "To_Do" });
+  input.value = "";
+  const newData = { "To-do List": allLists };
+  db.collection("User's Infor").doc(UserID).set(newData);
+
+  renderList(allLists);
+});
+
+btnDelete.addEventListener("click", () => {
+  popUpDelete.classList.add("openPopUp");
+  popUpDeleteContent.classList.add("slideDown");
+});
+
 btnClosePopUpAdd.addEventListener("click", () => {
   popUpAdd.classList.remove("openPopUp");
+  popUpAddContent.classList.remove("slideDown");
 });
 
 btnComfirmDelete.addEventListener("click", () => {
@@ -177,18 +184,22 @@ btnComfirmDelete.addEventListener("click", () => {
   const newData = { "To-do List": allLists };
   db.collection("User's Infor").doc(UserID).set(newData);
   popUpDelete.classList.remove("openPopUp");
+  popUpDeleteContent.classList.remove("slideDown");
 });
 
 btnClosePopUpDelete.addEventListener("click", () => {
   popUpDelete.classList.remove("openPopUp");
+  popUpDeleteContent.classList.remove("slideDown");
 });
 
 btnComfirmLogOut.addEventListener("click", () => {
   allLists = [];
   auth.signOut();
   popUpLogOut.classList.remove("openPopUp");
+  popUpLogOutContent.classList.remove("slideDown");
 });
 
 btnClosePopUpLogOut.addEventListener("click", () => {
   popUpLogOut.classList.remove("openPopUp");
-})
+  popUpLogOutContent.classList.remove("slideDown");
+});
