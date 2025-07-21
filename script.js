@@ -16,7 +16,7 @@ let UserID;
 auth.onAuthStateChanged(async (user) => {
   if (user) {
     document.getElementById("userName").innerHTML =
-      "Wellcome " + user.displayName;
+      "Welcome " + user.displayName;
     document.getElementById("logInPlace").style.display = "none";
     document.getElementById("accountPlace").style.display = "";
     document.getElementById("inputPlace").style.display = "";
