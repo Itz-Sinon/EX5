@@ -219,19 +219,19 @@ button {
 }
 #to_doBox {
   grid-area: 2/2/3/3;
-  min-height: 65vh;
+  min-height: 60vh;
 }
 #doingBox {
   grid-area: 2/4/3/5;
-  min-height: 65vh;
+  min-height: 50vh;
 }
 #doneBox {
   grid-area: 2/6/3/7;
-  min-height: 65vh;
+  min-height: 50vh;
 }
 #trashBox {
   grid-area: 2/8/3/9;
-  min-height: 65vh;
+  min-height: 50vh;
 }
 .task {
   display: flex;
@@ -337,5 +337,8 @@ button {
   }
   .task {
     padding: 5px;
+  }
+  .displayPC {
+    display: none !important;
   }
 }
